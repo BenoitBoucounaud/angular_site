@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root', // balise name
+    templateUrl: './app.component.html', // html road
+    styleUrls: ['./app.component.scss'] // css road
 })
 export class AppComponent {
-  title = 'base-site';
+    title = 'Classic app to keep basics close';
 }
