@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h2>Mes apparatus</h2>
+            <h2>My apparatus</h2>
             <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
             <ul class="list-group" *ngFor="let app of apparatus | keyvalue">
                 <app-apparatus apparatusName={{app.key}} apparatusStatus={{app.value}}></app-apparatus>
