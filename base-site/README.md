@@ -1,14 +1,3 @@
-# angular_site
-Angular web site. Classic and simple.
-It use bootstrap for easy and simple CSS.
-
-## Init
-install node_mode in base site with :
-``` 
-npm install bootstrap@3 --save
-```
-(don't forget to add "node_modules/bootstrap/dist/css/bootstrap.css" in file angular.json > architect/build/options if it's not)
-
 # BaseSite
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.

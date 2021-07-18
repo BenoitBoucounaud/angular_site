@@ -1,0 +1,20 @@
+<div style="text-align:center">
+    <h1>
+        Welcome to {{ title }}!
+    </h1>
+</div>
+<app-first></app-first>
+
+<!-- those class are bootstraps class for easy CSS -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>My apparatus</h2>
+            <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
+            <ul class="list-group" *ngFor="let app of apparatus | keyvalue">
+                <app-apparatus apparatusName={{app.key}} apparatusStatus={{app.value}}></app-apparatus>
+            </ul>
+            <button class="btn btn-success" [disabled]="!isAuth" (click)="onTurnOn()">Turn all on</button>
+        </div>
+    </div>
+</div>
