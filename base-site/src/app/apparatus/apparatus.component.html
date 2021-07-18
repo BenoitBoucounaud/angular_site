@@ -1,0 +1,7 @@
+<li class="list-group-item">
+    <h4>Apparatus: {{apparatusName}} -- Status : {{getStatus()}} </h4>
+    <!-- with [] ngModel is a one-way binding and with [()] it's a two-way binding -->
+    <!-- here it gives apparatusName the input value -->
+    <!-- this value is independent from the others in the list -->
+    <input type="text" class="form-control" [(ngModel)]="apparatusName">
+</li>
