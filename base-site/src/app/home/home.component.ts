@@ -9,6 +9,16 @@ export class HomeComponent implements OnInit {
 
     title = 'Classic app to keep basics close';
     isAuth = false;
+    lastUpdate = new Date()!
+    // We emulate catching data from server
+    lastUpdateAsync = new Promise((resolve, reject) => {
+        const date = new Date();
+        setTimeout(
+            () => {
+                resolve(date);
+            }, 2000
+        );
+    });
 
     // apparatu : status
     apparatus = {

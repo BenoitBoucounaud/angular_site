@@ -10,6 +10,10 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>My apparatus</h2>
+            <!-- Here '| date' is a generic Angular pipe (https://angular.io/guide/pipes) -->
+            <p>Last update : {{lastUpdate | date: 'short'| uppercase}}</p>
+            <!-- The async pipe subscribes to an Observable or Promise and returns the latest value it has emitted. -->
+            <p>Last async update : {{lastUpdateAsync | async }}</p>
             <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
             <ul class="list-group" *ngFor="let app of apparatus | keyvalue">
                 <app-apparatus apparatusName={{app.key}} apparatusStatus={{app.value}}></app-apparatus>
