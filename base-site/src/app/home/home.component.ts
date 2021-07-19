@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
     title = 'Classic app to keep basics close';
     isAuth = false;
 
+    // apparatu : status
     apparatus = {
         'Washing machine': 'Off',
         'Coffee machine': 'On',
