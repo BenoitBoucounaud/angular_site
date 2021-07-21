@@ -7,13 +7,17 @@ import { FirstComponent } from './first/first.component';
 import { HomeComponent } from './home/home.component';
 import { ApparatusComponent } from './apparatus/apparatus.component';
 import { FormsModule } from '@angular/forms';
+import { PostComponent } from './post/post.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         FirstComponent,
         HomeComponent,
-        ApparatusComponent
+        ApparatusComponent,
+        PostComponent,
+        PostListComponent
     ],
     imports: [
         BrowserModule,
