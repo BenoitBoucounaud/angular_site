@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { NONE_TYPE } from '@angular/compiler';
+import { Component, Input, OnInit } from '@angular/core';
+import { Post } from 'src/helpers/classes/post';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+    selector: 'app-post',
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+    post: Post;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        post: Post
+    ) {
+        this.post = post
+    }
+
+    ngOnInit(): void {
+    }
 
 }
+
