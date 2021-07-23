@@ -9,15 +9,18 @@ import { Post } from 'src/helpers/classes/post';
 })
 export class PostComponent implements OnInit {
 
-    post: Post;
+    @Input() post: Post = {
+        "title": "",
+        "content": "",
+        "loveIt": 0,
+        "created_at": new Date("11/23/2020 14:07")
+    };
 
-    constructor(
-        post: Post
-    ) {
-        this.post = post
+    constructor() {
     }
 
     ngOnInit(): void {
+        console.log(this.post)
     }
 
 }

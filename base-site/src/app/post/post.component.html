@@ -1,6 +1,10 @@
 <li [ngClass]="{'list-group-item': true}">
-    <h1>{{post.title}}</h1>
-    <p>{{post.created_at}}</p>
-    <p>{{post.content}}</p>
-    <button>Love it {{post.loveIt}}</button>
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{post.title}}</h5>
+        <small>{{post.created_at}}</small>
+    </div>
+    <p class="mb-1"> {{post.content}}</p>
+    <!-- TODO make this button a toggle btn to increment loveIt -->
+    <button class="btn btn-outline-info">Love it </button>
+    <p> {{post.loveIt}} </p>
 </li>
