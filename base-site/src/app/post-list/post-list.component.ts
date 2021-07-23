@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/helpers/classes/post';
+import * as posts from './../../ressources/jsons/posts.json'
 
 @Component({
     selector: 'app-post-list',
@@ -7,13 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-    posts = []
+    postsList: any = (posts as any).default.posts;
+    simplePostList = new Array()
 
-    constructor() { }
+    constructor() {
+        console.log(this.postsList)
+        console.log(typeof this.postsList)
+        this.getPosts()
+    }
 
     ngOnInit(): void {
     }
 
-    // TODO : make a getter who catch each post from posts.json
-    // it will catch each post, transform it in a Post class and add it in posts
+    getPosts() {
+        this.simplePostList = []
+        this.postsList.forEach((post: any) => {
+            let postObject = new Post(post.title, post.content, post.loveIt, post.created_at)
+            this.simplePostList.push(postObject)
+        }
+        )
+    }
+
 }
