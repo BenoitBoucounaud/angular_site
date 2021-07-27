@@ -1,5 +1,9 @@
-<li class="list-group-item">
-    <h4>Apparatus: {{apparatusName}} -- Status : {{getStatus()}} </h4>
+<!-- add dynamic style with ngStyle and dynamic CSS class with ngClass -->
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': apparatusStatus.toLowerCase() === 'on',
+                'list-group-item-danger': apparatusStatus.toLowerCase() === 'off'}">
+    <div style="width:20px;height:20px;background-color:red;" *ngIf="apparatusStatus.toLowerCase() === 'off'"></div>
+    <h4 [ngStyle]="{color: getColor()}">Apparatus: {{apparatusName}} -- Status : {{getStatus()}} </h4>
     <!-- with [] ngModel is a one-way binding and with [()] it's a two-way binding -->
     <!-- here it gives apparatusName the input value -->
     <!-- this value is independent from the others in the list -->

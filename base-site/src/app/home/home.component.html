@@ -3,13 +3,26 @@
         Welcome to {{ title }}!
     </h1>
 </div>
-<app-first></app-first>
+
+
+<!-- router link must be write in app-routing -->
+<button class="btn btn-outline-primary" [routerLink]="['/post-list']">
+    Post list
+</button>
+<button class="btn btn-outline-danger" [routerLink]="['/angular-home-page']">
+    Angular home page
+</button>
+<router-outlet></router-outlet>
 
 <!-- those class are bootstraps class for easy CSS -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <h2>My apparatus</h2>
+            <!-- Here '| date' is a generic Angular pipe (https://angular.io/guide/pipes) -->
+            <p>Last update : {{lastUpdate | date: 'short'| uppercase}}</p>
+            <!-- The async pipe subscribes to an Observable or Promise and returns the latest value it has emitted. -->
+            <p>Last async update : {{lastUpdateAsync | async }}</p>
             <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
             <ul class="list-group" *ngFor="let app of apparatus | keyvalue">
                 <app-apparatus apparatusName={{app.key}} apparatusStatus={{app.value}}></app-apparatus>
