@@ -23,5 +23,12 @@ export class PostComponent implements OnInit {
         console.log(this.post)
     }
 
+    // on a time we gonna do it directly on the json file
+    updateLikes(action: 'add' | 'delete') {
+        if (action == 'add')
+            this.post.loveIt++
+        else
+            this.post.loveIt--
+    }
 }
 
