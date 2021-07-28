@@ -1,6 +1,6 @@
 import { NONE_TYPE } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/helpers/classes/post';
+import { Post } from 'src/app/services/posts.service';
 
 @Component({
     selector: 'app-post',
@@ -20,7 +20,6 @@ export class PostComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.post)
     }
 
     // on a time we gonna do it directly on the json file

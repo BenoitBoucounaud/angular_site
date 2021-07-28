@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { ApparatusService } from './services/apparatus.service';
+import { PostsServices } from './services/posts.service';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { ApparatusService } from './services/apparatus.service';
         FormsModule // needed to use two-way binding
     ],
     providers: [
-        ApparatusService
+        ApparatusService,
+        PostsServices
     ],
     bootstrap: [HomeComponent] // home page route
 })
