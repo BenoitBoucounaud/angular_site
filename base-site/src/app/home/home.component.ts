@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApparatusService } from '../services/apparatus.service';
 
 @Component({
     selector: 'app-home',
@@ -11,6 +12,9 @@ export class HomeComponent implements OnInit {
     title = 'Classic app to keep basics close';
     isAuth = false;
     lastUpdate = new Date()!
+    apparatuses: any = {}
+
+
     // We emulate catching data from server
     lastUpdateAsync = new Promise((resolve, reject) => {
         const date = new Date();
@@ -21,15 +25,7 @@ export class HomeComponent implements OnInit {
         );
     });
 
-    // apparatu : status
-    apparatus = {
-        'Washing machine': 'Off',
-        'Coffee machine': 'On',
-        'Dishwasher': 'Off'
-    };
-
-
-    constructor(private router: Router) {
+    constructor(private router: Router, private apparatusService: ApparatusService) {
         // set 4 sec to make isAuth = true
         setTimeout(
             () => {
@@ -39,10 +35,17 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // define apparatus
+        this.apparatuses = this.apparatusService.apparatuses
     }
 
     onTurnOn() {
-        console.log('We turn all on!')
+        this.apparatusService.switchOnAll()
+    }
+    onTurnOff() {
+        if (confirm('Are you sure you want to turn off all your apparatuses? ')) {
+            this.apparatusService.switchOffAll()
+        }
     }
 
 

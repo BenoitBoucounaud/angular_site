@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ApparatusService } from '../services/apparatus.service';
 
 @Component({
     selector: 'app-apparatus',
@@ -9,9 +10,10 @@ export class ApparatusComponent implements OnInit {
 
     // Needs configuration metadata when component is called
     @Input() apparatusName: string = '';
-    @Input() apparatusStatus: string = 'Off';
+    @Input() apparatusStatus: string = 'off';
+    @Input() index: number = 0;
 
-    constructor() { }
+    constructor(private apparatusService: ApparatusService) { }
 
     ngOnInit(): void {
     }
@@ -28,6 +30,18 @@ export class ApparatusComponent implements OnInit {
             return 'red';
         }
         return null;
+    }
+
+    onSwitch() {
+        if (this.apparatusStatus.toLowerCase() === 'on') {
+            this.apparatusStatus = 'off';
+        }
+        else
+            this.apparatusStatus = 'on';
+    }
+
+    getSwitchingAction(): string {
+        return this.apparatusService.getSwitchingAction(this.index)
     }
 
 }

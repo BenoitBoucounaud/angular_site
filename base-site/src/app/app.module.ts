@@ -8,6 +8,7 @@ import { ApparatusComponent } from './apparatus/apparatus.component';
 import { FormsModule } from '@angular/forms';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { ApparatusService } from './services/apparatus.service';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,9 @@ import { PostListComponent } from './post-list/post-list.component';
         AppRoutingModule,
         FormsModule // needed to use two-way binding
     ],
-    providers: [],
+    providers: [
+        ApparatusService
+    ],
     bootstrap: [HomeComponent] // home page route
 })
 export class AppModule { }
