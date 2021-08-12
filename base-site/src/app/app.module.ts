@@ -10,6 +10,12 @@ import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { ApparatusService } from './services/apparatus.service';
 import { PostsServices } from './services/posts.service';
+import { AuthComponent } from './auth/auth.component';
+import { ApparatusListComponent } from './apparatus-list/apparatus-list.component';
+import { AuthService } from './services/auth.service';
+import { SingleApparatusComponent } from './single-apparatus/single-apparatus.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -17,7 +23,11 @@ import { PostsServices } from './services/posts.service';
         HomeComponent,
         ApparatusComponent,
         PostComponent,
-        PostListComponent
+        PostListComponent,
+        AuthComponent,
+        ApparatusListComponent,
+        SingleApparatusComponent,
+        FourOhFourComponent,
     ],
     imports: [
         BrowserModule,
@@ -26,7 +36,9 @@ import { PostsServices } from './services/posts.service';
     ],
     providers: [
         ApparatusService,
-        PostsServices
+        PostsServices,
+        AuthService,
+        AuthGuard
     ],
     bootstrap: [HomeComponent] // home page route
 })
