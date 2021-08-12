@@ -4,32 +4,17 @@
     </h1>
 </div>
 
-
-<!-- router link must be write in app-routing -->
-<button class="btn btn-outline-primary" [routerLink]="['/post-list']">
-    Post list
-</button>
-<button class="btn btn-outline-danger" [routerLink]="['/angular-home-page']">
-    Angular home page
-</button>
-<router-outlet></router-outlet>
-
-<!-- those class are bootstraps class for easy CSS -->
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>My apparatus</h2>
-            <!-- Here '| date' is a generic Angular pipe (https://angular.io/guide/pipes) -->
-            <p>Last update : {{lastUpdate | date: 'short'| uppercase}}</p>
-            <!-- The async pipe subscribes to an Observable or Promise and returns the latest value it has emitted. -->
-            <p>Last async update : {{lastUpdateAsync | async }}</p>
-            <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
-            <ul class="list-group" *ngFor="let apparatus of apparatuses; let i = index">
-                <app-apparatus [apparatusName]="apparatus.name" [apparatusStatus]="apparatus.status" [index]="i">
-                </app-apparatus>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a routerLink="auth">Authentication</a></li>
+                <li routerLinkActive="active"><a routerLink="apparatus-list">Apparatus list</a></li>
+                <li routerLinkActive="active"><a routerLink="post-list">Post list</a></li>
+                <li routerLinkActive="active"><a routerLink="angular-home-page">Angular home page</a></li>
             </ul>
-            <button class="btn btn-success" [disabled]="!isAuth" (click)="onTurnOn()">Turn all on</button>
-            <button class="btn btn-danger" [disabled]="!isAuth" (click)="onTurnOff()">Turn all oaff</button>
         </div>
     </div>
-</div>
+</nav>
+
+<router-outlet></router-outlet>
