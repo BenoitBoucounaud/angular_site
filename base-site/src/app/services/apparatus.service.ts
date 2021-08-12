@@ -14,14 +14,17 @@ export class ApparatusService {
     // apparatus : status
     apparatuses = [
         {
+            id: 1,
             name: 'Washing machine',
             status: 'off'
         },
         {
+            id: 2,
             name: 'Coffee machine',
             status: 'on'
         },
         {
+            id: 3,
             name: 'Dishwasher',
             status: 'off'
         }
@@ -55,5 +58,14 @@ export class ApparatusService {
             return 'on'
         else
             return 'off'
+    }
+
+    getApparatusById(id: number) {
+        const appareil = this.apparatuses.find(
+            (s) => {
+                return s.id === id;
+            }
+        );
+        return appareil;
     }
 }
