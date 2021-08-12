@@ -12,6 +12,9 @@ export class ApparatusComponent implements OnInit {
     @Input() apparatusName: string = '';
     @Input() apparatusStatus: string = 'off';
     @Input() index: number = 0;
+    @Input() id: number = 0;
+
+    isAuth: boolean = false;
 
     constructor(private apparatusService: ApparatusService) { }
 

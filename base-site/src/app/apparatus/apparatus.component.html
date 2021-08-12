@@ -3,6 +3,7 @@
                 'list-group-item-success': apparatusStatus.toLowerCase() === 'on',
                 'list-group-item-danger': apparatusStatus.toLowerCase() === 'off'}">
     <h4 [ngStyle]="{color: getColor()}">Apparatus: {{apparatusName}} -- Status : {{getStatus()}} </h4>
+    <a [routerLink]="['/apparatus', id]">Détail</a>
     <!-- with [] ngModel is a one-way binding and with [()] it's a two-way binding -->
     <!-- here it gives apparatusName the input value -->
     <!-- this value is independent from the others in the list -->
