@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApparatusService } from 'src/app/services/apparatus.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-apparatus-list',
@@ -12,6 +13,7 @@ export class ApparatusListComponent implements OnInit {
     isAuth = false;
     lastUpdate = new Date()!
     apparatuses: any = {}
+    apparatusesSub: Subscription = new Subscription;
 
 
     // We emulate catching data from server
@@ -34,8 +36,12 @@ export class ApparatusListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // define apparatus
-        this.apparatuses = this.apparatusService.apparatuses
+        this.apparatusesSub = this.apparatusService.apparatusSubject.subscribe(
+            (apparatuses: any[]) => {
+                this.apparatuses = apparatuses
+            }
+        );
+        this.apparatusService.emitApparatusSubject();
     }
 
     onTurnOn() {
@@ -47,5 +53,7 @@ export class ApparatusListComponent implements OnInit {
         }
     }
 
-
+    ngOnDestroy(): void {
+        this.apparatusesSub.unsubscribe();
+    }
 }

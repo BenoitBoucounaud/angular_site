@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs/Subject';
+
 /**
  * The services allow:
  *  -> not to have the same code doubled or tripled at different levels of the application - this therefore facilitates the maintenance, readability and stability of the code;
@@ -11,8 +13,11 @@
 
 export class ApparatusService {
 
+    // observables : https://angular.io/guide/observables
+    apparatusSubject = new Subject<any[]>();
+
     // apparatus : status
-    apparatuses = [
+    private apparatuses = [
         {
             id: 1,
             name: 'Washing machine',
@@ -31,26 +36,33 @@ export class ApparatusService {
 
     ];
 
-    switchOnAll() {
+    emitApparatusSubject() {
+        // next : A handler for each delivered value. 
+        this.apparatusSubject.next(this.apparatuses.slice());
+    }
 
+    switchOnAll() {
         for (let apparatus of this.apparatuses) {
             apparatus.status = 'on'
         }
+        this.emitApparatusSubject()
     }
 
     switchOffAll() {
-
         for (let apparatus of this.apparatuses) {
             apparatus.status = 'off'
         }
+        this.emitApparatusSubject()
     }
 
     switchOnOne(i: number) {
         this.apparatuses[i].status = 'on';
+        this.emitApparatusSubject()
     }
 
     switchOffOne(i: number) {
         this.apparatuses[i].status = 'off';
+        this.emitApparatusSubject()
     }
 
     getSwitchingAction(i: number): string {
