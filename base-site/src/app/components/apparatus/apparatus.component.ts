@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApparatusService } from '../services/apparatus.service';
+import { ApparatusService } from 'src/app/services/apparatus.service';
 
 @Component({
     selector: 'app-apparatus',

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ApparatusService } from '../services/apparatus.service';
-
+import { ApparatusService } from 'src/app/services/apparatus.service';
 @Component({
     selector: 'app-single-apparatus',
     templateUrl: './single-apparatus.component.html',
