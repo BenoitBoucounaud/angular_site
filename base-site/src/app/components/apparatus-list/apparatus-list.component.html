@@ -9,8 +9,7 @@
             <p>Last async update : {{lastUpdateAsync | async }}</p>
             <!-- need key value here to transforms Object (or Map) into an array of key value pairs -->
             <ul class="list-group" *ngFor="let apparatus of apparatuses; let i = index">
-                <app-apparatus [apparatusName]="apparatus.name" [apparatusStatus]="apparatus.status" [index]="i"
-                    [id]="apparatus.id">
+                <app-apparatus [index]="i" [id]="apparatus.id">
                 </app-apparatus>
             </ul>
             <button class="btn btn-success" [disabled]="!isAuth" (click)="onTurnOn()">Turn all on</button>

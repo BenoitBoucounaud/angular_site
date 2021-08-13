@@ -1,16 +1,14 @@
 <!-- add dynamic style with ngStyle and dynamic CSS class with ngClass -->
 <li [ngClass]="{'list-group-item': true,
-                'list-group-item-success': apparatusStatus.toLowerCase() === 'on',
-                'list-group-item-danger': apparatusStatus.toLowerCase() === 'off'}">
-    <h4 [ngStyle]="{color: getColor()}">Apparatus: {{apparatusName}} -- Status : {{getStatus()}} </h4>
+                'list-group-item-success': apparatus.status.toLowerCase() === 'on',
+                'list-group-item-danger': apparatus.status.toLowerCase() === 'off'}">
+    <h4 [ngStyle]="{color: getColor()}">Apparatus: {{apparatus.name}} -- Status : {{getStatus()}} </h4>
     <a [routerLink]="['/apparatus', id]">Détail</a>
     <!-- with [] ngModel is a one-way binding and with [()] it's a two-way binding -->
-    <!-- here it gives apparatusName the input value -->
-    <!-- this value is independent from the others in the list -->
-    <input type="text" class="form-control" [(ngModel)]="apparatusName">
+    <input type="text" class="form-control" [(ngModel)]="apparatus.name">
     <button [ngClass]="{'btn': true, 'btn-sm': true, 
-    'btn-success':apparatusStatus.toLowerCase() === 'off',
-    'btn-danger':apparatusStatus.toLowerCase() === 'on'}" (click)="onSwitch()">
+    'btn-success':apparatus.status.toLowerCase() === 'off',
+    'btn-danger':apparatus.status.toLowerCase() === 'on'}" (click)="onSwitch()">
         {{getSwitchingAction().toUpperCase()}}
     </button>
 </li>

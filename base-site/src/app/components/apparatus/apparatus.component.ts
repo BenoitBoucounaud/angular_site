@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { ApparatusService } from 'src/app/services/apparatus.service';
 
 @Component({
@@ -9,42 +10,54 @@ import { ApparatusService } from 'src/app/services/apparatus.service';
 export class ApparatusComponent implements OnInit {
 
     // Needs configuration metadata when component is called
-    @Input() apparatusName: string = '';
-    @Input() apparatusStatus: string = 'off';
     @Input() index: number = 0;
     @Input() id: number = 0;
 
     isAuth: boolean = false;
+    apparatus: any = {}
+    apparatusesSub: Subscription = new Subscription;
 
     constructor(private apparatusService: ApparatusService) { }
 
     ngOnInit(): void {
+        this.apparatusesSub = this.apparatusService.apparatusSubject.subscribe(
+            (apparatuses: any[]) => {
+                this.apparatus = apparatuses[this.index]
+            }
+        );
+        this.apparatusService.emitApparatusSubject();
     }
 
 
     getStatus() {
-        return this.apparatusStatus;
+        return this.apparatus.status;
     }
 
     getColor() {
-        if (this.apparatusStatus.toLowerCase() === 'on') {
+        if (this.apparatus.status.toLowerCase() === 'on') {
             return 'green';
-        } else if (this.apparatusStatus.toLowerCase() === 'off') {
+        } else if (this.apparatus.status.toLowerCase() === 'off') {
             return 'red';
         }
         return null;
     }
 
     onSwitch() {
-        if (this.apparatusStatus.toLowerCase() === 'on') {
-            this.apparatusStatus = 'off';
+        if (this.apparatus.status.toLowerCase() === 'on') {
+            this.apparatus.status = 'off';
         }
         else
-            this.apparatusStatus = 'on';
+            this.apparatus.status = 'on';
+
+        this.apparatusService.emitApparatusSubject();
     }
 
     getSwitchingAction(): string {
         return this.apparatusService.getSwitchingAction(this.index)
+    }
+
+    ngOnDestroy(): void {
+        this.apparatusesSub.unsubscribe();
     }
 
 }
