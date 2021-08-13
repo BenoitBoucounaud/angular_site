@@ -41,6 +41,20 @@ export class ApparatusService {
         this.apparatusSubject.next(this.apparatuses.slice());
     }
 
+    addApparatus(name: string, status: string) {
+        const apparatusObject = {
+            id: 0,
+            name: '',
+            status: ''
+        };
+        apparatusObject.name = name;
+        apparatusObject.status = status;
+        apparatusObject.id = this.apparatuses[(this.apparatuses.length - 1)].id + 1;
+        this.apparatuses.push(apparatusObject);
+        console.log(this.apparatuses)
+        this.emitApparatusSubject();
+    }
+
     switchOnAll() {
         for (let apparatus of this.apparatuses) {
             apparatus.status = 'on'
@@ -73,11 +87,11 @@ export class ApparatusService {
     }
 
     getApparatusById(id: number) {
-        const appareil = this.apparatuses.find(
+        const apparatus = this.apparatuses.find(
             (s) => {
                 return s.id === id;
             }
         );
-        return appareil;
+        return apparatus;
     }
 }
