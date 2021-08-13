@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AngularPageComponent } from './components/angular-page/angular-page.component';
 import { ApparatusListComponent } from './components/apparatus-list/apparatus-list.component';
 import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { AuthComponent } from './components/auth/auth.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
     },
     {
         path: 'angular-home-page',
-        component: AppComponent
+        component: AngularPageComponent
     },
     {
         path: '', // root route

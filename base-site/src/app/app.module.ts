@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { ApparatusService } from './services/apparatus.service';
 import { PostsServices } from './services/posts.service';
 import { AuthService } from './services/auth.service';
@@ -16,10 +15,10 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostComponent } from './components/post/post.component';
 import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { HomeComponent } from './components/home/home.component';
+import { AngularPageComponent } from './components/angular-page/angular-page.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
         HomeComponent,
         ApparatusComponent,
         PostComponent,
@@ -28,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
         ApparatusListComponent,
         SingleApparatusComponent,
         FourOhFourComponent,
+        AngularPageComponent,
     ],
     imports: [
         BrowserModule,
