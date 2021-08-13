@@ -16,6 +16,7 @@ import { PostComponent } from './components/post/post.component';
 import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { HomeComponent } from './components/home/home.component';
 import { AngularPageComponent } from './components/angular-page/angular-page.component';
+import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { AngularPageComponent } from './components/angular-page/angular-page.com
         SingleApparatusComponent,
         FourOhFourComponent,
         AngularPageComponent,
+        EditApparatusComponent,
     ],
     imports: [
         BrowserModule,
