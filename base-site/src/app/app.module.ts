@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AngularPageComponent } from './components/angular-page/angular-page.component';
 import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
 import { UserService } from './services/user.service';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { UserService } from './services/user.service';
         FourOhFourComponent,
         AngularPageComponent,
         EditApparatusComponent,
+        UserListComponent,
     ],
     imports: [
         BrowserModule,

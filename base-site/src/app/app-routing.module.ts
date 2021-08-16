@@ -8,6 +8,7 @@ import { EditApparatusComponent } from './components/edit-apparatus/edit-apparat
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { SingleApparatusComponent } from './components/single-apparatus/single-apparatus.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
     {
         path: 'auth',
         component: AuthComponent
+    },
+    {
+        path: 'users',
+        component: UserListComponent
     },
     {
         path: 'post-list',
