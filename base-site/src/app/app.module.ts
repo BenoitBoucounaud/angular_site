@@ -19,6 +19,7 @@ import { AngularPageComponent } from './components/angular-page/angular-page.com
 import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
         AngularPageComponent,
         EditApparatusComponent,
         UserListComponent,
+        NewUserComponent,
     ],
     imports: [
         BrowserModule,
