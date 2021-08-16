@@ -17,6 +17,7 @@ import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { HomeComponent } from './components/home/home.component';
 import { AngularPageComponent } from './components/angular-page/angular-page.component';
 import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { EditApparatusComponent } from './components/edit-apparatus/edit-apparat
         ApparatusService,
         PostsServices,
         AuthService,
-        AuthGuard
+        AuthGuard,
+        UserService
     ],
     bootstrap: [HomeComponent] // home page route
 })
