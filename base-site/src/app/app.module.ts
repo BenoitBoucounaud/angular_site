@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ApparatusService } from './services/apparatus.service';
@@ -37,7 +37,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule // needed to use two-way binding
+        FormsModule, // needed to use two-way binding
+        ReactiveFormsModule
     ],
     providers: [
         ApparatusService,
