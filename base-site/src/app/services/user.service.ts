@@ -2,7 +2,9 @@ import { User } from '../models/User.model';
 import { Subject } from 'rxjs/Subject';
 
 export class UserService {
-    private users!: User[];
+    private users: User[] = [
+        new User('Will', 'Alexander', 'will@will.com', 'orange juce', ['code', 'drink coffe'])
+    ];
     userSubject = new Subject<User[]>();
 
     emitUsers() {
