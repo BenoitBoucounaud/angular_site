@@ -1,4 +1,6 @@
 import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * The services allow:
@@ -11,30 +13,19 @@ import { Subject } from 'rxjs/Subject';
  *      will have access to the same instance of the service, but the rest of the application will not no access.
  */
 
+@Injectable()
 export class ApparatusService {
 
     // observables : https://angular.io/guide/observables
     apparatusSubject = new Subject<any[]>();
 
     // apparatus : status
-    private apparatuses = [
-        {
-            id: 1,
-            name: 'Washing machine',
-            status: 'off'
-        },
-        {
-            id: 2,
-            name: 'Coffee machine',
-            status: 'on'
-        },
-        {
-            id: 3,
-            name: 'Dishwasher',
-            status: 'off'
-        }
+    private apparatuses: any[] = [];
 
-    ];
+    constructor(private httpClient: HttpClient) {
+        // could use this to get apparatuses first but we want to show it with the button
+        // this.getApparatusesFromServer();
+    }
 
     emitApparatusSubject() {
         // next : A handler for each delivered value. 
@@ -93,5 +84,33 @@ export class ApparatusService {
             }
         );
         return apparatus;
+    }
+
+    saveApparatusesToServer() {
+        // use put to delete old apparatuses in database
+        this.httpClient
+            .put('https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/apparatuses.json', this.apparatuses)
+            .subscribe(
+                () => {
+                    console.log('Saved !');
+                },
+                (error) => {
+                    console.log('Error ! : ' + error);
+                }
+            );
+    }
+
+    getApparatusesFromServer() {
+        this.httpClient
+            .get<any[]>('https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/apparatuses.json')
+            .subscribe(
+                (response) => {
+                    this.apparatuses = response;
+                    this.emitApparatusSubject();
+                },
+                (error) => {
+                    console.log('Error ! : ' + error);
+                }
+            );
     }
 }

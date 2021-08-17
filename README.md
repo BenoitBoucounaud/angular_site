@@ -1,6 +1,9 @@
 # angular_site
 Angular web site. Classic and simple.
 It use bootstrap for easy and simple CSS.
+Use FireBase for BackEnd and NoSQL database.
+URL data base : https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/
+FireBase doc : https://firebase.google.com/docs?authuser=0
 
 ## Init
 install node_mode in base site with :
