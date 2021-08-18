@@ -13,4 +13,4 @@ install node_mode in base site with :
 ``` 
 npm install bootstrap@3 --save
 ```
-(don't forget to add "node_modules/bootstrap/dist/css/bootstrap.css" in file angular.json > architect/build/options if it's not)
+(don't forget to add "node_modules/bootstrap/dist/css/bootstrap.css" in file angular.json > architect/build/options/styles if it's not)
