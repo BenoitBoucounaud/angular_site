@@ -9,13 +9,13 @@ FireBase doc : https://firebase.google.com/docs?authuser=0
 Angular web site, build with firebase.
 
 ## Init
-install bootstrap in projects with :
+Install bootstrap in projects with :
 ``` 
 npm install bootstrap@3 --save
 ```
 (don't forget to add "node_modules/bootstrap/dist/css/bootstrap.css" in file angular.json > architect/build/options/styles if it's not)
 
-install firebase with npm (for library) :
+Install firebase and angular/fire with npm (for library) (https://fireship.io/snippets/install-angularfire/):
 ```
-npm install firebase --save
+npm install firebase @angular/fire
 ```
