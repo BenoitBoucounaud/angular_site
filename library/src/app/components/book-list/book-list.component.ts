@@ -33,8 +33,8 @@ export class BookListComponent implements OnInit {
         this.booksService.removeBook(book);
     }
 
-    onViewBook(key: string) {
-        this.router.navigate(['/books', 'view', key]);
+    onViewBook(id: number) {
+        this.router.navigate(['/books', 'view', id]);
     }
 
     ngOnDestroy() {

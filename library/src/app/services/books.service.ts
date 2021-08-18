@@ -15,6 +15,8 @@ export class BooksService {
     booksRef!: AngularFireList<any>;
     booksSubject = new Subject<Book[]>();
 
+    lastId: number = 0;
+
 
     constructor(
         private db: AngularFireDatabase
@@ -23,18 +25,20 @@ export class BooksService {
     }
 
     getBooks() {
-        this.booksRef = this.db.list('/books');
+        this.booksRef = this.db.list('/books', ref => ref.orderByChild('id'));
+        // transform a AngularFireList to a Array of object
         this.dbBooksObs = this.booksRef.snapshotChanges().pipe(
             map(changes =>
-                changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+                changes.map(c => ({ ...c.payload.val() }))
             )
         );
 
-        // this.dbBooksObs = this.db.list('/books').valueChanges(); // return a AngularFireList
-        // take content of AngularFireList to create a Typed List
+        // take content of dbBooksObs to create a Typed Array
         this.dbBooksObs.subscribe(
             (result) => {
                 this.books = result;
+                if (this.books.length != 0)
+                    this.lastId = this.books[this.books.length - 1].id
                 this.emitBooks()
             },
             (error) => {
@@ -43,24 +47,19 @@ export class BooksService {
         )
     }
 
-    getSingleBook(key: string) {
-        return this.db.list('/books/', ref => ref.orderByChild('key').equalTo(key)).valueChanges();
+    getSingleBook(id: number) {
+        return this.db.list('/books/', ref => ref.orderByChild('id').equalTo(+id)).valueChanges();
     }
 
     emitBooks() {
         this.booksSubject.next(this.books);
     }
 
-    saveBooks() {
-        this.db.list('/books').remove();
-        this.books.forEach(book => {
-            this.booksRef.push(book);
-        });
-    }
-
     createNewBook(newBook: Book) {
+        this.lastId++;
+        newBook.id = this.lastId;
         this.books.push(newBook);
-        this.saveBooks();
+        this.booksRef.push(newBook);
         this.emitBooks();
     }
 
@@ -75,7 +74,11 @@ export class BooksService {
             }
         );
         this.books.splice(bookIndexToRemove, 1);
-        this.saveBooks();
+        // remove all books table and refil it with books not the best practice but avoid to use key
+        this.db.list('/books').remove();
+        this.books.forEach(book => {
+            this.booksRef.push(book);
+        });
         this.emitBooks();
     }
 
