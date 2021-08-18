@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -24,12 +25,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const firebaseConfig = {
     apiKey: "AIzaSyD1u0L829GIo45NHfSM07lYt7cMAUoF_Rs",
     authDomain: "library-database-e6cc6.firebaseapp.com",
+    databaseURL: "https://library-database-e6cc6-default-rtdb.europe-west1.firebasedatabase.app/",
     projectId: "library-database-e6cc6",
     storageBucket: "library-database-e6cc6.appspot.com",
     messagingSenderId: "384383565584",
     appId: "1:384383565584:web:7cadb32f1e0bbe2643ef95"
 };
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -48,7 +49,8 @@ const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig), //initialize firebase
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
-        AngularFireStorageModule // storage
+        AngularFireStorageModule, // storage
+        AngularFireDatabaseModule // database
     ],
     providers: [
         AuthGuardService,
