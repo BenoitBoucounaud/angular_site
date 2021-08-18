@@ -14,6 +14,8 @@
             </ul>
             <button class="btn btn-success" [disabled]="!isAuth" (click)="onTurnOn()">Turn all on</button>
             <button class="btn btn-danger" [disabled]="!isAuth" (click)="onTurnOff()">Turn all off</button>
+            <button class="btn btn-primary" (click)="onSave()">Save apparatuses</button>
+            <button class="btn btn-primary" (click)="onFetch()">Get apparatuses</button>
         </div>
     </div>
 </div>

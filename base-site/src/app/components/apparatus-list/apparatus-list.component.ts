@@ -53,6 +53,14 @@ export class ApparatusListComponent implements OnInit {
         }
     }
 
+    onSave() {
+        this.apparatusService.saveApparatusesToServer();
+    }
+
+    onFetch() {
+        this.apparatusService.getApparatusesFromServer();
+    }
+
     ngOnDestroy(): void {
         this.apparatusesSub.unsubscribe();
     }

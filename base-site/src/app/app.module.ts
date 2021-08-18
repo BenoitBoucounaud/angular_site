@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { ApparatusService } from './services/apparatus.service';
@@ -16,6 +18,10 @@ import { PostComponent } from './components/post/post.component';
 import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { HomeComponent } from './components/home/home.component';
 import { AngularPageComponent } from './components/angular-page/angular-page.component';
+import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
+import { UserService } from './services/user.service';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 @NgModule({
     declarations: [
@@ -28,17 +34,23 @@ import { AngularPageComponent } from './components/angular-page/angular-page.com
         SingleApparatusComponent,
         FourOhFourComponent,
         AngularPageComponent,
+        EditApparatusComponent,
+        UserListComponent,
+        NewUserComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule // needed to use two-way binding
+        FormsModule, // needed to use two-way binding
+        ReactiveFormsModule,
+        HttpClientModule
     ],
     providers: [
         ApparatusService,
         PostsServices,
         AuthService,
-        AuthGuard
+        AuthGuard,
+        UserService
     ],
     bootstrap: [HomeComponent] // home page route
 })

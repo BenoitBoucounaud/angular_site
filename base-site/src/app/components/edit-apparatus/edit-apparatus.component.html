@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <!-- In general, we do not give a value to a local reference: we simply write #f or # my-name. In this specific case of a
+        form in template method, we attribute the value ngForm to it to have access to the object created by Angular. -->
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="name">
+                    Apparatus name
+                </label>
+                <!-- name is the key for key value pairing
+                ngModel signal to Angular to savec this control  -->
+                <input type="text" id="name" class="form-control" name="name" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="status">
+                    Apparatus status
+                </label>
+                <select id="status" class="form-control" name="status" [ngModel]="defaultStatus">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <!-- type = submit is linked with the form tag and will use the ngSubmit methode -->
+            <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Save</button>
+        </form>
+    </div>
+</div>

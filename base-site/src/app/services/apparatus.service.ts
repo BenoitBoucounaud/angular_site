@@ -1,4 +1,6 @@
 import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * The services allow:
@@ -11,34 +13,37 @@ import { Subject } from 'rxjs/Subject';
  *      will have access to the same instance of the service, but the rest of the application will not no access.
  */
 
+@Injectable()
 export class ApparatusService {
 
     // observables : https://angular.io/guide/observables
     apparatusSubject = new Subject<any[]>();
 
     // apparatus : status
-    private apparatuses = [
-        {
-            id: 1,
-            name: 'Washing machine',
-            status: 'off'
-        },
-        {
-            id: 2,
-            name: 'Coffee machine',
-            status: 'on'
-        },
-        {
-            id: 3,
-            name: 'Dishwasher',
-            status: 'off'
-        }
+    private apparatuses: any[] = [];
 
-    ];
+    constructor(private httpClient: HttpClient) {
+        // could use this to get apparatuses first but we want to show it with the button
+        // this.getApparatusesFromServer();
+    }
 
     emitApparatusSubject() {
         // next : A handler for each delivered value. 
         this.apparatusSubject.next(this.apparatuses.slice());
+    }
+
+    addApparatus(name: string, status: string) {
+        const apparatusObject = {
+            id: 0,
+            name: '',
+            status: ''
+        };
+        apparatusObject.name = name;
+        apparatusObject.status = status;
+        apparatusObject.id = this.apparatuses[(this.apparatuses.length - 1)].id + 1;
+        this.apparatuses.push(apparatusObject);
+        console.log(this.apparatuses)
+        this.emitApparatusSubject();
     }
 
     switchOnAll() {
@@ -73,11 +78,39 @@ export class ApparatusService {
     }
 
     getApparatusById(id: number) {
-        const appareil = this.apparatuses.find(
+        const apparatus = this.apparatuses.find(
             (s) => {
                 return s.id === id;
             }
         );
-        return appareil;
+        return apparatus;
+    }
+
+    saveApparatusesToServer() {
+        // use put to delete old apparatuses in database
+        this.httpClient
+            .put('https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/apparatuses.json', this.apparatuses)
+            .subscribe(
+                () => {
+                    console.log('Saved !');
+                },
+                (error) => {
+                    console.log('Error ! : ' + error);
+                }
+            );
+    }
+
+    getApparatusesFromServer() {
+        this.httpClient
+            .get<any[]>('https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/apparatuses.json')
+            .subscribe(
+                (response) => {
+                    this.apparatuses = response;
+                    this.emitApparatusSubject();
+                },
+                (error) => {
+                    console.log('Error ! : ' + error);
+                }
+            );
     }
 }
