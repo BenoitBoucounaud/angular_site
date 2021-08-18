@@ -9,8 +9,13 @@ FireBase doc : https://firebase.google.com/docs?authuser=0
 Angular web site, build with firebase.
 
 ## Init
-install node_mode in base site with :
+install bootstrap in projects with :
 ``` 
 npm install bootstrap@3 --save
 ```
 (don't forget to add "node_modules/bootstrap/dist/css/bootstrap.css" in file angular.json > architect/build/options/styles if it's not)
+
+install firebase with npm (for library) :
+```
+npm install firebase --save
+```
