@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { BooksService } from './services/books.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 // Your web app's Firebase configuration
@@ -42,6 +43,8 @@ const firebaseConfig = {
     imports: [
         BrowserModule,
         AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
         AngularFireModule.initializeApp(firebaseConfig), //initialize firebase
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
