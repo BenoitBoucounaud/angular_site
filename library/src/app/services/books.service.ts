@@ -78,6 +78,9 @@ export class BooksService {
                     return false;
             }
         );
+
+        //remove photo in storage
+        this.afStorage.refFromURL(book.photo).delete();
         this.books.splice(bookIndexToRemove, 1);
         // remove all books table and refil it with books not the best practice but avoid to use key
         this.db.list('/books').remove();
