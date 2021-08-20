@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { Book } from '../models/book.model';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { DataSnapshot } from '@angular/fire/database/interfaces';
-import { map } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { finalize, map } from 'rxjs/operators';
+import { Book } from '../models/book.model';
 
 @Injectable({
     providedIn: 'root'
@@ -17,9 +18,13 @@ export class BooksService {
 
     lastId: number = 0;
 
+    uploadPercent: Observable<number> = new Observable<number>();
+    downloadURL: Observable<string> = new Observable;
 
     constructor(
-        private db: AngularFireDatabase
+        private db: AngularFireDatabase,
+        private afStorage: AngularFireStorage,
+        private router: Router
     ) {
         this.getBooks();
     }
@@ -80,6 +85,22 @@ export class BooksService {
             this.booksRef.push(book);
         });
         this.emitBooks();
+    }
+
+    //https://github.com/angular/angularfire/blob/master/docs/storage/storage.md
+    uploadFile(file: File) {
+        return new Promise(
+            (resolve, reject) => {
+                const filePath = 'image/' + Date.now().toString() + file.name;
+                const fileRef = this.afStorage.ref(filePath);
+                const task = this.afStorage.upload(filePath, file)
+                    .snapshotChanges().pipe(
+                        finalize(() => {
+                            this.downloadURL = fileRef.getDownloadURL()
+                            resolve(this.downloadURL)
+                        })).subscribe();
+            }
+        );
     }
 
 }
