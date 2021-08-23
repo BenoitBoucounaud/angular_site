@@ -101,8 +101,6 @@ export class PostsServices {
                     const url = 'https://angular-site-database-default-rtdb.europe-west1.firebasedatabase.app/posts/'
                         + Object.keys(resp)[0] + '.json';
 
-                    console.log(url)
-
                     this.httpClient
                         .delete(url)
                         .subscribe(
