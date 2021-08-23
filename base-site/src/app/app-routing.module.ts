@@ -6,6 +6,7 @@ import { ApparatusComponent } from './components/apparatus/apparatus.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { EditApparatusComponent } from './components/edit-apparatus/edit-apparatus.component';
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { SingleApparatusComponent } from './components/single-apparatus/single-apparatus.component';
@@ -49,6 +50,10 @@ const routes: Routes = [
     {
         path: 'post-list',
         component: PostListComponent
+    },
+    {
+        path: 'new-post',
+        component: NewPostComponent
     },
 
     {

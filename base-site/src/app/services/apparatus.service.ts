@@ -42,7 +42,6 @@ export class ApparatusService {
         apparatusObject.status = status;
         apparatusObject.id = this.apparatuses[(this.apparatuses.length - 1)].id + 1;
         this.apparatuses.push(apparatusObject);
-        console.log(this.apparatuses)
         this.emitApparatusSubject();
     }
 

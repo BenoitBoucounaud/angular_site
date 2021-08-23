@@ -22,6 +22,7 @@ import { EditApparatusComponent } from './components/edit-apparatus/edit-apparat
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
         EditApparatusComponent,
         UserListComponent,
         NewUserComponent,
+        NewPostComponent,
     ],
     imports: [
         BrowserModule,

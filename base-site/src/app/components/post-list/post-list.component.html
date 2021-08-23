@@ -1,3 +1,4 @@
-<ul class="list-group" *ngFor="let p of simplePostList">
+<ul class="list-group" *ngFor="let p of posts">
     <app-post [post]="p"></app-post>
 </ul>
+<button class="btn btn-primary" (click)="createNewPost()">New post</button>

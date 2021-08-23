@@ -1,11 +1,13 @@
 <li [ngClass]="{'list-group-item': true}">
     <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{post.title}}</h5>
+        <h5 class="fs-3 fw-bold">{{post.title}}</h5>
         <small>{{post.created_at}}</small>
     </div>
-    <p class="mb-1"> {{post.content}}</p>
+    <p class="fs-6"> {{post.content}}</p>
     <!-- TODO make this button a toggle btn to increment loveIt -->
-    <button class="btn btn-outline-info" (click)="updateLikes('add')">Love it </button>
-    <button class="btn btn-outline-danger" (click)="updateLikes('delete')">Dislike it </button>
+    <button class="btn btn-info" (click)="updateLikes('add')">Love it </button>
+    <button class="btn btn-danger" (click)="updateLikes('delete')">Dislike it </button>
     <p> {{post.loveIt}} </p>
+
+    <button class="btn btn-danger" (click)="deletePost()">Delete</button>
 </li>
