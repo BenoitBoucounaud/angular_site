@@ -1,6 +1,7 @@
 import { NONE_TYPE } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/Post.model';
+import { PostsServices } from 'src/app/services/posts.service';
 
 @Component({
     selector: 'app-post',
@@ -10,13 +11,14 @@ import { Post } from 'src/app/models/Post.model';
 export class PostComponent implements OnInit {
 
     @Input() post: Post = {
+        "id": 0,
         "title": "",
         "content": "",
         "loveIt": 0,
         "created_at": new Date("11/23/2020 14:07")
     };
 
-    constructor() {
+    constructor(private postsService: PostsServices) {
     }
 
     ngOnInit(): void {
@@ -28,6 +30,11 @@ export class PostComponent implements OnInit {
             this.post.loveIt++
         else
             this.post.loveIt--
+        this.postsService.updatePost(this.post);
+    }
+
+    deletePost() {
+        this.postsService.deletePost(this.post);
     }
 }
 
