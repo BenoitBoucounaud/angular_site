@@ -1,6 +1,6 @@
 import { NONE_TYPE } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/services/posts.service';
+import { Post } from 'src/app/models/Post.model';
 
 @Component({
     selector: 'app-post',

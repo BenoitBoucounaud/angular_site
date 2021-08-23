@@ -1,3 +1,4 @@
+import { Post } from '../models/Post.model';
 import * as posts from './../../ressources/jsons/posts.json';
 
 export class PostsServices {
@@ -15,25 +16,5 @@ export class PostsServices {
             this.simplePostList.push(postObject)
         })
         return this.simplePostList
-    }
-}
-
-export class Post {
-
-    title: string;
-    content: string;
-    loveIt: number;
-    created_at: Date;
-
-    constructor(
-        title: string,
-        content: string,
-        loveIt: number,
-        created_at: Date
-    ) {
-        this.title = title;
-        this.content = content;
-        this.loveIt = loveIt;
-        this.created_at = created_at
     }
 }
